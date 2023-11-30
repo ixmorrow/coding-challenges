@@ -1,1 +1,0 @@
-/mnt/c/Users/ivanm/Documents/Development/coding-challenges/rust/wctool/target/debug/wctool: /mnt/c/Users/ivanm/Documents/Development/coding-challenges/rust/wctool/src/lib.rs /mnt/c/Users/ivanm/Documents/Development/coding-challenges/rust/wctool/src/main.rs
