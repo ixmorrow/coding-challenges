@@ -1,4 +1,4 @@
-# WC Tool - RUst
+# WC Tool - Rust
 
 Simple implementation of the wc Unix command line tool.
 
