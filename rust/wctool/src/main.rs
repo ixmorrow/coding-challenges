@@ -4,14 +4,14 @@ use wctool;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let file_path = wctool::parse_config(&args).unwrap_or_else(|err| {
+    let config = wctool::parse_config(&args).unwrap_or_else(|err| {
         println!("Problem parsing arguments: {err}");
         process::exit(1);
     });
 
-    println!("In file {}", file_path);
+    println!("Config:\n{}", config);
 
-    if let Err(e) = wctool::run(file_path) {
+    if let Err(e) = wctool::run(config.clone()) {
         println!("Application error: {e}");
         process::exit(1);
     }
