@@ -15,9 +15,6 @@ class Config {
         if (argv[1] != nullptr && argv[2] != nullptr) {
             file_path = argv[1];
             query_param = argv[2];
-
-            std::cout << file_path << endl;
-            std::cout << query_param << endl;
         } else {
             std::cerr << "Error: Insufficient command-line arguments.\n";
             std::exit(EXIT_FAILURE);
@@ -57,19 +54,27 @@ void run(Config config) {
     std::string line;
     if (myfile.is_open()) {
         while(getline(myfile, line)) {
-            cout << line << endl;
             lines++;
             chars += line.size();
             words += word_count(line);
+            bytes += sizeof(line);
         }
         myfile.close();
     } else cout << "Unable to open file" << endl;
-
-    cout << "Lines: " << lines << endl;
-    cout << "Characters: " << chars << endl;
-    cout << "Words: " << words << endl;
+    
     // initialize FileData with variable data
+    FileData file_data(bytes, lines, chars, words);
+
     // match query param
+    if (config.query_param == "-l") {
+        cout << file_data.lines << " " << config.file_path << endl;
+    } else if (config.query_param == "-c") {
+        cout << file_data.bytes << " " << config.file_path << endl;
+    } else if (config.query_param == "-w") {
+        cout << file_data.words << " " << config.file_path << endl;
+    } else if (config.query_param == "-m") {
+        cout << file_data.chars << " " << config.file_path << endl;
+    }
 }
 
 
